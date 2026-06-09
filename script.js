@@ -1,8 +1,8 @@
 function addTask(){
 
-let input=document.getElementById("taskInput");
+let input = document.getElementById("taskInput");
 
-let task=input.value;
+let task = input.value;
 
 if(task===""){
 return;
@@ -10,7 +10,16 @@ return;
 
 let li=document.createElement("li");
 
-li.innerText=task;
+li.innerHTML=`
+${task}
+<button onclick="this.parentElement.remove()">
+❌
+</button>
+`;
+
+li.addEventListener("click",function(){
+li.style.textDecoration="line-through";
+});
 
 document.getElementById("taskList").appendChild(li);
 
